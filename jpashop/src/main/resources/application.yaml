@@ -18,3 +18,4 @@ logging:
   level:
     # Logger에 sql문이 찍힌다.
     org.hibernate.SQL: debug
+    org.hibernate.type: trace
