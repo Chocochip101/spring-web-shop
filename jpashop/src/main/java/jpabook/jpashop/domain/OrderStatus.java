@@ -1,4 +1,4 @@
 package jpabook.jpashop.domain;
 
-public class OrderStatus {
+public enum OrderStatus {
 }
