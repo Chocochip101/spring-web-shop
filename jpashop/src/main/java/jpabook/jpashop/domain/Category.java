@@ -23,7 +23,7 @@ public class Category {
     private List<Item> items = new ArrayList<>();
 
     // 계층 구조 구현
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parent_id")
     private Category parent;
 
