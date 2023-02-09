@@ -1,5 +1,6 @@
 package jpabook.jpashop.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jpabook.jpashop.domain.item.Item;
 import lombok.Getter;
@@ -16,6 +17,7 @@ public class Category {
     private Long id;
 
     private String name;
+    @JsonIgnore
     @ManyToMany
     @JoinTable(name = "category_item",
             joinColumns = @JoinColumn(name = "category_id"),
@@ -23,10 +25,12 @@ public class Category {
     private List<Item> items = new ArrayList<>();
 
     // 계층 구조 구현
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parent_id")
     private Category parent;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "parent")
     private List<Category> child = new ArrayList<>();
 
