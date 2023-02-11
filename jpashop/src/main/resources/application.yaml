@@ -13,9 +13,10 @@ spring:
 #        show_sql은 콘솔에 찍힘
         show_sql: true
         format_sql: true
+        default_batch_fetch_size: 100
 
 logging:
   level:
     # Logger에 sql문이 찍힌다.
     org.hibernate.SQL: debug
-    org.hibernate.type: trace
+    p6spy: info

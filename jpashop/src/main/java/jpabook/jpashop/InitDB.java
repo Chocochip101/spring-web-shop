@@ -17,6 +17,7 @@ public class InitDB {
     public void init(){
         initService.dbInit1();
         initService.dbInit2();
+        initService.dbInit3();
     }
 
     @Component
@@ -58,6 +59,27 @@ public class InitDB {
             OrderItem orderItem2 = OrderItem.createOrderItem(book2, 40000, 4);
             Delivery delivery =getDelivery(member);
             Order order = Order.createOrder(member, delivery, orderItem1, orderItem2);
+            em.persist(order);
+
+        }
+        public void dbInit3(){
+            Member member = getMember("user3", "NewYork", "NewYork", "3333");
+            em.persist(member);
+
+            Book book1 = getBook("Spring1 book",20000, 200);
+            em.persist(book1);
+
+            Book book2 = getBook("Spring2 book", 40000, 300);
+            em.persist(book2);
+
+            Book book3 = getBook("Spring3 book", 40000, 300);
+            em.persist(book3);
+
+            OrderItem orderItem1 = OrderItem.createOrderItem(book1, 20000, 3);
+            OrderItem orderItem2 = OrderItem.createOrderItem(book2, 40000, 4);
+            OrderItem orderItem3 = OrderItem.createOrderItem(book3, 40000, 4);
+            Delivery delivery =getDelivery(member);
+            Order order = Order.createOrder(member, delivery, orderItem1, orderItem2, orderItem3);
             em.persist(order);
 
         }
